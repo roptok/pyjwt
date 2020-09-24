@@ -94,7 +94,7 @@ class PyJWS:
             pass
 
         # Header
-        header = {"typ": self.header_typ, "alg": algorithm}
+        header = {"alg": algorithm, "typ": self.header_typ}
 
         if headers:
             self._validate_headers(headers)
