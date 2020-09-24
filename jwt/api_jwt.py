@@ -53,7 +53,7 @@ class PyJWT(PyJWS):
                 "Expecting a mapping object, as JWT only supports "
                 "JSON objects as payloads."
             )
-
+        header = {"alg": algorithm, "typ": self.header_typ}
         # Payload
         for time_claim in ["exp", "iat", "nbf"]:
             # Convert datetime to a intDate value in known time-format claims
@@ -67,7 +67,7 @@ class PyJWT(PyJWS):
         ).encode("utf-8")
 
         return super().encode(
-            json_payload, key, algorithm, headers, json_encoder
+            json_payload, key, algorithm, header, json_encoder
         )
 
     def decode(
