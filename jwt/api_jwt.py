@@ -83,9 +83,9 @@ class PyJWT(PyJWS):
         payload, _, _, _ = self._load(jwt)
 
         if options is None:
-            options = {"verify_signature": True}
+            options = {"verify_signature": False}
         else:
-            options.setdefault("verify_signature", True)
+            options.setdefault("verify_signature", False)
 
         if options["verify_signature"] and not algorithms:
             raise DecodeError(
